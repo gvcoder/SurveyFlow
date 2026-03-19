@@ -1,0 +1,5 @@
+{
+  "name": "SurveyFlow",
+  "description": "A simple survey creation and management platform with an admin dashboard and public participation links.",
+  "requestFramePermissions": []
+}

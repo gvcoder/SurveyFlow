@@ -1,0 +1,54 @@
+{
+  "entities": {
+    "Survey": {
+      "title": "Survey",
+      "description": "A survey created by an admin.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "text": { "type": "string" },
+              "type": { "type": "string", "enum": ["text", "multiple-choice"] },
+              "options": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "published": { "type": "boolean" }
+      },
+      "required": ["title", "questions", "createdBy", "createdAt"]
+    },
+    "Response": {
+      "title": "Response",
+      "description": "A response to a survey.",
+      "type": "object",
+      "properties": {
+        "surveyId": { "type": "string" },
+        "answers": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["surveyId", "answers", "submittedAt"]
+    }
+  },
+  "firestore": {
+    "surveys": {
+      "schema": "Survey",
+      "description": "Collection of surveys."
+    },
+    "responses": {
+      "schema": "Response",
+      "description": "Collection of survey responses."
+    }
+  }
+}
